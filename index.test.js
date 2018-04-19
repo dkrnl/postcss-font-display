@@ -11,20 +11,20 @@ function run(input, output, options) {
 }
 
 it('add new font-display', () => run(
-    '@font-face { }',
-    '@font-face { font-display: swap }',
+    '@font-face { font-family: \'My Font\'; }',
+    '@font-face { font-family: \'My Font\'; font-display: swap; }',
     { display: 'swap' }
 ));
 
 it('pass exists font-display', () => run(
-    '@font-face { font-display: auto }',
-    '@font-face { font-display: auto }',
-    { display: 'swap', overload: false }
+    '@font-face { font-family: \'My Font\'; font-display: auto; }',
+    '@font-face { font-family: \'My Font\'; font-display: auto; }',
+    { display: 'swap', replace: false }
 ));
 
-it('overload exists font-display', () => run(
-    '@font-face { font-display: auto }',
-    '@font-face { font-display: swap }',
-    { display: 'swap', overload: true }
+it('replace exists font-display', () => run(
+    '@font-face { font-family: \'My Font\'; font-display: auto; }',
+    '@font-face { font-family: \'My Font\'; font-display: swap; }',
+    { display: 'swap', replace: true }
 ));
 

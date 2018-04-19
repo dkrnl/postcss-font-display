@@ -19,10 +19,18 @@
 }
 ```
 
+## Install
+
+With [npm](https://npmjs.org/package/postcss-font-display) do:
+
+```
+npm install postcss-font-display --save
+```
+
 ## Usage
 
 ```js
-postcss([ require('postcss-font-display')({ display: 'swap', overload: false }) ])
+postcss([ require('postcss-font-display')({ display: 'swap', replace: false }) ])
 ```
 
 ## Options
@@ -30,7 +38,7 @@ postcss([ require('postcss-font-display')({ display: 'swap', overload: false }) 
 Option       | Type    | Default | Description |
 ------------ | ------- | ------- | ----------- |
 `display`    | String  | `swap`  | Value for new [font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) css rule |
-`overload  ` | Boolean | `false` | Overload exists font-display rule |
+`replace`    | Boolean | `false` | Replace exists font-display rule |
 
 ***
 
