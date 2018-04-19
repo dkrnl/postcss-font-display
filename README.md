@@ -8,12 +8,14 @@
 
 ```css
 @font-face {
+    /* Input example */
     font-family: 'My Font';
 }
 ```
 
 ```css
 @font-face {
+    /* Output example */
     font-family: 'My Font';
     font-display: swap;
 }
