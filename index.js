@@ -1,13 +1,27 @@
 var postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-font-display', function (opts) {
-    opts = opts || {};
+module.exports = postcss.plugin('postcss-font-display', function (options) {
+    options = options || { display: 'swap', overload: false };
 
-    // Work with options here
+    return function (root) {
 
-    return function (root, result) {
+        root.walkAtRules('font-face', (rule) => {
 
-        // Transform CSS AST here
+            var exists = false;
+            for (let decl of rule.nodes) {
+                if (decl.prop === 'font-display') {
+                    if (options.overload) {
+                        decl.value = options.display;
+                    }
+                    exists = true;
+                }
+            }
+
+            if (!exists) {
+                rule.append({ prop: 'font-display', value: options.display });
+            }
+
+        });
 
     };
 });
