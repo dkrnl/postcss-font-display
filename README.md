@@ -1,6 +1,6 @@
 # PostCSS Font Display [![Build Status][ci-img]][ci]
 
-[PostCSS] plugin add [font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) css rule.
+[PostCSS] plugin to automatically add [font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) css rule.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/dkrnl/postcss-font-display.svg
