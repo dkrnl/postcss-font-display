@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "eslint": "^5.5.0",
+    "eslint-config-logux": "^25.0.1",
     "eslint-config-postcss": "^3.0.6",
     "jest": "^23.5.0"
   },
