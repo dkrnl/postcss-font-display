@@ -35,10 +35,20 @@ npm install postcss-font-display --save
 postcss([ require('postcss-font-display')({ display: 'swap', replace: false }) ])
 ```
 
+### Advanced usage
+
+```js
+postcss([ require('postcss-font-display')([
+  { display: 'swap', replace: false },
+  { test: 'FontAwesome', display: 'block' },
+]) ])
+```
+
 ## Options
 
 Option       | Type    | Default | Description |
 ------------ | ------- | ------- | ----------- |
+`test`       | RegExp  | false   | Text pattern for [font-family](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-family) css rule |
 `display`    | String  | `swap`  | Value for new [font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) css rule |
 `replace`    | Boolean | `false` | Replace exists font-display rule |
 

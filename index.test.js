@@ -33,3 +33,17 @@ it('replace exists font-display', () => {
     { display: 'swap', replace: true }
   )
 })
+
+it('multiple options', () => {
+  return run(
+    [
+      '@font-face { font-family: \'FontAwesome\'; }',
+      '@font-face { font-family: \'My Font\'; }'
+    ].join(''),
+    [
+      '@font-face { font-family: \'FontAwesome\'; font-display: block; }',
+      '@font-face { font-family: \'My Font\'; font-display: swap; }'
+    ].join(''),
+    [{ test: 'FontAwesome', display: 'block' }]
+  )
+})
