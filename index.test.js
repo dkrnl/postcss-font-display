@@ -1,16 +1,16 @@
-var postcss = require('postcss')
+let postcss = require('postcss')
 
-var plugin = require('./')
+let plugin = require('./')
 
 function run (input, output, options) {
   return postcss([plugin(options)]).process(input, { from: undefined })
-    .then(function (result) {
+    .then(result => {
       expect(result.css.replace(/\s+/g, ' ')).toEqual(output)
       expect(result.warnings()).toHaveLength(0)
     })
 }
 
-it('add new font-display', function () {
+it('add new font-display', () => {
   return run(
     '@font-face { font-family: \'My Font\'; }',
     '@font-face { font-family: \'My Font\'; font-display: swap; }',
@@ -18,7 +18,7 @@ it('add new font-display', function () {
   )
 })
 
-it('pass exists font-display', function () {
+it('pass exists font-display', () => {
   return run(
     '@font-face { font-family: \'My Font\'; font-display: auto; }',
     '@font-face { font-family: \'My Font\'; font-display: auto; }',
@@ -26,7 +26,7 @@ it('pass exists font-display', function () {
   )
 })
 
-it('replace exists font-display', function () {
+it('replace exists font-display', () => {
   return run(
     '@font-face { font-family: \'My Font\'; font-display: auto; }',
     '@font-face { font-family: \'My Font\'; font-display: swap; }',

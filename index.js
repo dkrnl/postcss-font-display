@@ -1,12 +1,12 @@
-var postcss = require('postcss')
+let postcss = require('postcss')
 
-module.exports = postcss.plugin('postcss-font-display', function (options) {
+module.exports = postcss.plugin('postcss-font-display', options => {
   options = options || { display: 'swap', replace: false }
 
-  return function (root) {
-    root.walkAtRules('font-face', function (rule) {
-      var exists = false
-      rule.walkDecls('font-display', function (decl) {
+  return root => {
+    root.walkAtRules('font-face', rule => {
+      let exists = false
+      rule.walkDecls('font-display', decl => {
         if (options.replace) {
           decl.value = options.display
         }
