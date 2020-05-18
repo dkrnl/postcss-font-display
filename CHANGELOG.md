@@ -9,3 +9,11 @@ Update postcss to 7 version
 
 Added: Initial version
 
+## 0.2.0 (2020-05-18)
+
+update from postcss-plugin-boilerplate
+
+## 0.2.1 (2020-05-18)
+
+add support `test` option
+

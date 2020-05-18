@@ -9,6 +9,7 @@
     "font-display"
   ],
   "scripts": {
+    "jest": "jest",
     "eslint": "eslint --fix .",
     "test": "jest && eslint ."
   },
