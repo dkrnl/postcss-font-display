@@ -17,3 +17,7 @@ update from postcss-plugin-boilerplate
 
 add support `test` option
 
+## 0.3.0 (2021-11-01)
+
+Update postcss to 8 version
+

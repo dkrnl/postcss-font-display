@@ -1,5 +1,3 @@
-let postcss = require('postcss')
-
 const defaultOptions = { display: 'swap', replace: false }
 
 function optionsByFont (rule, options) {
@@ -12,7 +10,6 @@ function optionsByFont (rule, options) {
   if (font) {
     options.forEach(opt => {
       if (opt.test) {
-        // eslint-disable-next-line security/detect-non-literal-regexp
         let pattern = new RegExp(opt.test)
         if (pattern.test(font)) result = opt
       } else {
@@ -23,28 +20,36 @@ function optionsByFont (rule, options) {
   return result
 }
 
-module.exports = postcss.plugin('postcss-font-display', options => {
-  options = options || defaultOptions
+/**
+ * @type {import('postcss').PluginCreator}
+ */
+module.exports = (opts = {}) => {
+  let options = opts || defaultOptions
 
   if (options && !Array.isArray(options)) {
     options = [options]
   }
 
-  return root => {
-    root.walkAtRules('font-face', rule => {
-      let exists = false
-      let fontOptions = optionsByFont(rule, options)
-
-      rule.walkDecls('font-display', decl => {
-        if (fontOptions.replace) {
-          decl.value = fontOptions.display
+  return {
+    postcssPlugin: 'postcss-font-display',
+    Root (root) {
+      root.walkAtRules('font-face', rule => {
+        let exists = false
+        let fontOptions = optionsByFont(rule, options)
+     
+        rule.walkDecls('font-display', decl => {
+          if (fontOptions.replace) {
+            decl.value = fontOptions.display
+          }
+          exists = true
+        })
+     
+        if (!exists) {
+          rule.append({ prop: 'font-display', value: fontOptions.display })
         }
-        exists = true
       })
-
-      if (!exists) {
-        rule.append({ prop: 'font-display', value: fontOptions.display })
-      }
-    })
+    }
   }
-})
+}
+
+module.exports.postcss = true
