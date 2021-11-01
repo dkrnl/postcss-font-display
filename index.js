@@ -45,7 +45,10 @@ module.exports = (opts = {}) => {
         })
      
         if (!exists) {
-          rule.append({ prop: 'font-display', value: fontOptions.display })
+          rule.append({
+            prop: 'font-display',
+            value: fontOptions.display,
+          })
         }
       })
     }
